@@ -18,7 +18,7 @@ the current Scene.
 
 The `draw()` function does two things:
 
-- get the current music level and normalize to `[0,1]`
+- get the current music level and normalize to [0,1]
 - call the current Scene object's `display()` function
 
 The main program is also responsible for handling user input to switch the
