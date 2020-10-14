@@ -1,3 +1,4 @@
+
 class Scene_Isabelle implements Scene{
   ArrayList<Ball> balls = new ArrayList<Ball>();
   
@@ -6,15 +7,16 @@ class Scene_Isabelle implements Scene{
   }
   
   void display(float musicLevel){
-    int num = (int)map(musicLevel, 0, 1, 1, 10);
-    float r = random(num, num*10);
+    int num = (int)map(musicLevel, 0, 1, 1, 20);
+    float r = random(num*2, num*8);
     float r2 = r*2;
     
-    for(int i=0; i<3; i++){
+    for(int i=0; i<num; i++){
       balls.add(new Ball(random(0+r2, width-r2), random(0+r2, height-r2), r, random(0, 255)));
     }
     
-    for(Ball b: balls){
+    for(int i=0; i<num; i++){
+      Ball b = balls.get(i);
       b.display();
     }
     
@@ -33,8 +35,9 @@ class Scene_Isabelle implements Scene{
     }
     
     void display(){
-      strokeWeight(0);
-      fill(0, 15, c);
+      strokeWeight(1);
+      stroke(255);
+      fill(15, 15, c);
       ellipse(x, y, r, r);
     }
     
