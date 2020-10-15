@@ -18,4 +18,3 @@ class Scene_Ball implements Scene
         ellipse(width/2, height/2, radius*2, radius*2);
     }
 }
-

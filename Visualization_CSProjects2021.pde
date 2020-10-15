@@ -6,7 +6,7 @@
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 
- 
+
 Minim minim;
 
 AudioPlayer file;
@@ -19,7 +19,7 @@ float highestLevel = 1e-6;
 ArrayList<Scene> scenes;
 Scene currentScene;
 
- 
+
 void setup()
 {
     size(800, 600);
@@ -32,11 +32,13 @@ void setup()
 
     currentScene = scenes.get(0);
     currentScene.initialize();
+
+   p = new ParticleSystem(new PVector (width/2, 50));
 }
 
 
 void initializeAudio()
-{  
+{
     minim = new Minim(this);
 
     file = minim.loadFile("superstylin.mp3");
@@ -57,7 +59,7 @@ void draw()
         highestLevel = level;
 
     level /= highestLevel;  // normalize to [0,1]
-    currentScene.display(level);    
+    currentScene.display(level);
 }
 
 
