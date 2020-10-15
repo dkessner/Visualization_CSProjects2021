@@ -29,6 +29,9 @@ void setup()
     scenes.add(new Scene_Title());
     scenes.add(new Scene_Ball());
     scenes.add(new Scene_Brooke());
+    scenes.add(new Scene_Isabelle());
+    scenes.add(new Scene_Rain());
+    scenes.add(new Scene_Velocity());
 
     currentScene = scenes.get(0);
     currentScene.initialize();
@@ -69,6 +72,9 @@ void keyPressed()
     {
         int index = (int)(key - '0');
         if (index < scenes.size())
+        {
           currentScene = scenes.get(index);
+          currentScene.initialize();
+        }
     }
 }
