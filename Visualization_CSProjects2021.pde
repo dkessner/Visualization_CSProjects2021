@@ -28,10 +28,17 @@ void setup()
     scenes = new ArrayList<Scene>();
     scenes.add(new Scene_Title());
     scenes.add(new Scene_Ball());
+<<<<<<< Updated upstream
     scenes.add(new Scene_Isabelle());
+=======
+    scenes.add(new Scene_Rain());
+    scenes.add(new Scene_Velocity());
+>>>>>>> Stashed changes
 
     currentScene = scenes.get(0);
     currentScene.initialize();
+    
+    p = new ParticleSystem(new PVector (width/2, 50));
 }
 
 
