@@ -25,5 +25,3 @@ class Scene_Title implements Scene
         text("Press 0-9 to change scene", width/2, height-100);
     }
 }
-
-
