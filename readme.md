@@ -9,9 +9,14 @@ We have a simple interface for a Scene:
 interface Scene
 {
     void initialize();
-    void display(float musicLevel);
+    void display(PGraphics pg, float musicLevel);
 }
 ```
+
+`pg`: offscreen graphics buffer; all `display()` implementations should draw to
+this buffer
+
+`musicLevel`: music level normalized to [0,1]
 
 The main program has a global ArrayList of Scene objects, and a reference to
 the current Scene.  
