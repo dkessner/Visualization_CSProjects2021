@@ -6,5 +6,6 @@
 interface Scene
 {
     void initialize();
-    void display(float musicLevel);
+    void display(PGraphics pg, float musicLevel);
 }
+

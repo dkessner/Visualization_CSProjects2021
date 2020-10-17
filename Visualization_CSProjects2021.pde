@@ -8,21 +8,24 @@ import ddf.minim.analysis.*;
 
 
 Minim minim;
-
 AudioPlayer file;
 AudioInput microphone;
-
 AudioSource source; // either file or microphone
-
 float highestLevel = 1e-6;
+
 
 ArrayList<Scene> scenes;
 Scene currentScene;
 
 
+PGraphics offscreenBuffer;
+
+
 void setup()
 {
     size(800, 600);
+    offscreenBuffer = createGraphics(width, height);
+
     initializeAudio();
 
     scenes = new ArrayList<Scene>();
@@ -51,14 +54,22 @@ void initializeAudio()
 
 void draw()
 {
-    background(0);
+    // get audio level
 
     float level = source != null ? source.mix.level() : 0;
     if (level > highestLevel)
         highestLevel = level;
 
     level /= highestLevel;  // normalize to [0,1]
-    currentScene.display(level);
+
+    // draw
+
+    offscreenBuffer.beginDraw();
+    offscreenBuffer.background(0);
+    currentScene.display(offscreenBuffer, level);
+    offscreenBuffer.endDraw();
+
+    image(offscreenBuffer, 0, 0);
 }
 
 
@@ -91,3 +102,4 @@ void keyPressed()
         highestLevel = 0;
     }
 }
+

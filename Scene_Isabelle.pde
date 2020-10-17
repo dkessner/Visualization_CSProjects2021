@@ -6,7 +6,7 @@ class Scene_Isabelle implements Scene{
     
   }
   
-  void display(float musicLevel){
+  void display(PGraphics pg, float musicLevel){
     int num = (int)map(musicLevel, 0, 1, 1, 20);
     float r = random(num*2, num*8);
     float r2 = r*2;
@@ -17,7 +17,7 @@ class Scene_Isabelle implements Scene{
     
     for(int i=0; i<num; i++){
       Ball b = balls.get(i);
-      b.display();
+      b.display(pg);
     }
     
   }
@@ -34,11 +34,11 @@ class Scene_Isabelle implements Scene{
       this.c = c;
     }
     
-    void display(){
-      strokeWeight(1);
-      stroke(255);
-      fill(15, 15, c);
-      ellipse(x, y, r, r);
+    void display(PGraphics pg){
+      pg.strokeWeight(1);
+      pg.stroke(255);
+      pg.fill(15, 15, c);
+      pg.ellipse(x, y, r, r);
     }
     
     void resetValues(){

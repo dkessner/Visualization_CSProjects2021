@@ -9,12 +9,12 @@ class Scene_Ball implements Scene
     {
     }
 
-    void display(float musicLevel)
+    void display(PGraphics pg, float musicLevel)
     {
         int green = (int)map(musicLevel, 0, 1, 0, 255);
-        fill(0, 128, green);    
+        pg.fill(0, 128, green);    
 
         float radius = 100 + musicLevel * 100;
-        ellipse(width/2, height/2, radius*2, radius*2);
+        pg.ellipse(pg.width/2, pg.height/2, radius*2, radius*2);
     }
 }

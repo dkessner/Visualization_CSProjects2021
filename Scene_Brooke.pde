@@ -8,9 +8,9 @@ class Scene_Brooke implements Scene
       
     }
   
-  void display(float musicLevel)
+  void display(PGraphics pg, float musicLevel)
   {
-    background (0);
+    pg.background (0);
   
   //float level = file.mix.level();
   
@@ -18,11 +18,11 @@ class Scene_Brooke implements Scene
   float radius = 100 + musicLevel * 100;
  // ellipse(width/2, height/2, radius*3, radius*3);
   
-  fill(255,182,193);
+  pg.fill(255,182,193);
   
   
        
-  ellipse(width/2, width/2,radius*3, 30);
+  pg.ellipse(pg.width/2, pg.width/2,radius*3, 30);
     
           
     

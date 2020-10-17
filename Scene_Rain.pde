@@ -11,14 +11,14 @@ class Scene_Rain implements Scene
       p = new ParticleSystem(new PVector (width/2, 50));
     }
 
-   void display(float musicLevel)
+   void display(PGraphics pg, float musicLevel)
     {
        //fill(255,0,0);
        float level = musicLevel*100;
        //ellipse(width/2, height/2, level+100, level+100);
-       fill(255);
-       text("level: " + level, 4*width/5-10, height/12);
-       p.run(level);
+       pg.fill(255);
+       pg.text("level: " + level, 4*width/5-10, height/12);
+       p.run(pg, level);
        for(int i=0; i<int(level)/25; i++)
          p.addParticle();
     }
@@ -41,12 +41,12 @@ class ParticleSystem
     particles.add(new Particle(origin));
   }
   
-  void run(float r)
+  void run(PGraphics pg, float r)
   {
     for (int i = particles.size()-1; i>=0; i--)
     {
       Particle p = particles.get(i);
-      p.run(r);
+      p.run(pg, r);
       if (p.isDead())
         particles.remove(i);
     }
@@ -66,10 +66,10 @@ class Particle
     lifespan = 255.0;
   }
   
-  void run(float r)
+  void run(PGraphics pg, float r)
   {
     update();
-    display(r);
+    display(pg, r);
   }
   
   void update()
@@ -79,15 +79,15 @@ class Particle
     lifespan -= 1.0;
   }
   
-  void display(float r)
+  void display(PGraphics pg, float r)
   {
-    stroke (255, lifespan);
-    fill(255, lifespan);
+    pg.stroke (255, lifespan);
+    pg.fill(255, lifespan);
     for (int i = 2; i < 8; i++ ) 
     {
-      noStroke();
-      fill(0, 0, 255);
-      ellipse(pos.x, pos.y + i*2, i*1.5+r, i*1.5+r);
+      pg.noStroke();
+      pg.fill(0, 0, 255);
+      pg.ellipse(pos.x, pos.y + i*2, i*1.5+r, i*1.5+r);
     }
   }
   

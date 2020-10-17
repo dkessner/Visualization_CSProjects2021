@@ -12,11 +12,11 @@ class Scene_Velocity implements Scene
     {
     }
 
-    void display(float musicLevel)
+    void display(PGraphics pg, float musicLevel)
     {
       
-        fill(255);
-        ellipse(x, y, r, r);
+        pg.fill(255);
+        pg.ellipse(x, y, r, r);
         
         float level = musicLevel * 100;
         float vx = level/10;
