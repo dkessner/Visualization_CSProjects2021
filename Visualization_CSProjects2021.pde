@@ -36,7 +36,7 @@ void setup()
     currentScene = scenes.get(0);
     currentScene.initialize();
 
-   p = new ParticleSystem(new PVector (width/2, 50));
+    p = new ParticleSystem(new PVector (width/2, 50));
 }
 
 
@@ -44,12 +44,10 @@ void initializeAudio()
 {
     minim = new Minim(this);
 
-    file = minim.loadFile("superstylin.mp3");
-    file.play();
-    source = file;
-
     microphone = minim.getLineIn();
-    //source = microphone;
+    file = minim.loadFile("superstylin.mp3");
+
+    source = microphone;
 }
 
 
@@ -57,7 +55,7 @@ void draw()
 {
     background(0);
 
-    float level = source.mix.level();
+    float level = source != null ? source.mix.level() : 0;
     if (level > highestLevel)
         highestLevel = level;
 
@@ -76,5 +74,22 @@ void keyPressed()
           currentScene = scenes.get(index);
           currentScene.initialize();
         }
+    }
+    else if (key == 'p')
+    {
+        if (!file.isPlaying())
+        {
+            file.play();
+            source = file;
+        }
+        else // already playing
+        {
+            file.pause();
+            source = microphone;
+        }
+    }
+    else if (key == 'z')
+    {
+        highestLevel = 0;
     }
 }

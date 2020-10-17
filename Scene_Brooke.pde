@@ -12,7 +12,7 @@ class Scene_Brooke implements Scene
   {
     background (0);
   
-  float level = file.mix.level();
+  //float level = file.mix.level();
   
 
   float radius = 100 + musicLevel * 100;
