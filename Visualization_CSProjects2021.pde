@@ -35,8 +35,6 @@ void setup()
 
     currentScene = scenes.get(0);
     currentScene.initialize();
-
-    p = new ParticleSystem(new PVector (width/2, 50));
 }
 
 
