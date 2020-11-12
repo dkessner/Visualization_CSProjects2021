@@ -18,12 +18,12 @@ class ParticleSystem
     particles.add(new Particle(origin, level));
   }
   
-  void run(float level)
+  void run(PGraphics pg, float level)
   {
     for (int i = particles.size()-1; i>=0; i--)
     {
       Particle p = particles.get(i);
-      p.run(level);
+      p.run(pg, level);
       if (p.isDead())
         particles.remove(i);
     }
@@ -47,10 +47,10 @@ class Particle
     r = 3+1.2*level;
   }
   
-  void run(float level)
+  void run(PGraphics pg, float level)
   {
     update();
-    display(level);
+    display(pg, level);
   }
   
   void update()
@@ -61,15 +61,15 @@ class Particle
     origin = new PVector (random(0,width), random (0,height));
   }
   
-  void display(float level)
+  void display(PGraphics pg, float level)
   {
-    stroke (255, lifespan);
-    fill(255, lifespan);
+    pg.stroke (255, lifespan);
+    pg.fill(255, lifespan);
     for (int i = 2; i < 8; i++ ) 
     {
-      noStroke();
-      fill(0, 0, 255);
-      ellipse(pos.x, pos.y + i*2, i+r, i+r);
+      pg.noStroke();
+      pg.fill(0, 0, 255);
+      pg.ellipse(pos.x, pos.y + i*2, i+r, i+r);
     }
     r*=.98;
   }
