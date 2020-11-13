@@ -2,7 +2,6 @@
 // Visualization_CSProjects2021.pde
 //
 
-
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 
@@ -35,6 +34,7 @@ void setup()
     scenes.add(new Scene_Isabelle());
     scenes.add(new Scene_Rain());
     scenes.add(new Scene_Velocity());
+    scenes.add(new Scene_Amber());
 
     currentScene = scenes.get(0);
     currentScene.initialize();
@@ -102,4 +102,3 @@ void keyPressed()
         highestLevel = 0;
     }
 }
-
