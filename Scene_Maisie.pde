@@ -1,5 +1,5 @@
 
-
+/*
 ParticleSystem p;
 class Scene_Maisie implements Scene
 {
@@ -97,4 +97,4 @@ void mousePressed()
     Particle p = createParticle();
     particles.add(p);
   }
-}
+}*/
