@@ -19,6 +19,8 @@ class Scene_Isabelle implements Scene{
       Ball b = balls.get(i);
       b.display(pg);
     }
+    fill(255);
+    text("change this code", width/2, height/2);
     
   }
   
