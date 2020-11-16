@@ -2,6 +2,9 @@
 // Scene_Rain.pde
 //
 
+int n = 8;
+color c = color(0,0,255);
+
 ParticleSystem p;
 
 class Scene_Rain implements Scene
@@ -13,12 +16,10 @@ class Scene_Rain implements Scene
 
    void display(PGraphics pg, float musicLevel)
     {
-       //fill(255,0,0);
        float level = musicLevel*100;
-       //ellipse(width/2, height/2, level+100, level+100);
        pg.fill(255);
        pg.text("level: " + level, 4*width/5-10, height/12);
-       p.run(pg, level);
+       p.run(pg, level, n, c);
        for(int i=0; i<int(level)/25; i++)
          p.addParticle(level);
     }
