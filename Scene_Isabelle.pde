@@ -47,6 +47,10 @@ class Scene_Isabelle implements Scene{
       
     }
     
+    void keyPressed(){
+      
+    }
+    
     
   }
   

@@ -35,6 +35,7 @@ void setup()
     scenes.add(new Scene_Rain());
     scenes.add(new Scene_Velocity());
     scenes.add(new Scene_Amber());
+    scenes.add(new Scene_Explosion());
 
     currentScene = scenes.get(0);
     currentScene.initialize();
@@ -101,4 +102,5 @@ void keyPressed()
     {
         highestLevel = 0;
     }
+    
 }
