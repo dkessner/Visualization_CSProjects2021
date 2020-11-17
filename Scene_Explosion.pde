@@ -1,5 +1,5 @@
 
-class Scene_Explosion implements Scene{
+class Scene_Explosion extends Scene{
   
   void initialize(){
     ps1 = new ParticleSystem(new PVector(width/2, height/2));

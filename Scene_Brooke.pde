@@ -1,7 +1,7 @@
 
 
 
-class Scene_Brooke implements Scene
+class Scene_Brooke extends Scene
 {
   void initialize()
     {

@@ -1,5 +1,5 @@
 
-class Scene_Isabelle implements Scene{
+class Scene_Isabelle extends Scene{
   ArrayList<Ball> balls = new ArrayList<Ball>();
   
   void initialize(){

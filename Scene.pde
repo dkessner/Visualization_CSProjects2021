@@ -3,8 +3,10 @@
 //
 
 
-interface Scene
+abstract class Scene
 {
-    void initialize();
-    void display(PGraphics pg, float musicLevel);
+    abstract void initialize();
+    abstract void display(PGraphics pg, float musicLevel);
+    
+    void keyPressed(){};
 }

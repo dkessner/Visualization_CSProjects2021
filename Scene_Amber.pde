@@ -1,5 +1,5 @@
 
-class Scene_Amber implements Scene
+class Scene_Amber extends Scene
 {
   PImage[] explosion = new PImage[17];
 

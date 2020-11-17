@@ -6,7 +6,7 @@ float x = 400;
 float y = 300;
 float r = 50;
 
-class Scene_Velocity implements Scene
+class Scene_Velocity extends Scene
 {
     void initialize()
     {

@@ -2,12 +2,8 @@
 // Scene_Rain.pde
 //
 
-int n = 8;
-color c = color(0,0,255);
 
-ParticleSystem p;
-
-class Scene_Rain implements Scene
+class Scene_Rain extends Scene
 {
     void initialize()
     {
@@ -23,4 +19,9 @@ class Scene_Rain implements Scene
        for(int i=0; i<int(level)/25; i++)
          p.addParticle(level);
     }
+    
+int n = 8;
+color c = color(0,0,255);
+
+ParticleSystem p;
 }

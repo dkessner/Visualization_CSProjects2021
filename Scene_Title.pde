@@ -3,7 +3,7 @@
 //
 
 
-class Scene_Title implements Scene
+class Scene_Title extends Scene
 {
     void initialize()
     {
