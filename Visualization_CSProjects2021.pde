@@ -29,7 +29,7 @@ void setup()
 
     scenes = new ArrayList<Scene>();
     scenes.add(new Scene_Title());
-    scenes.add(new Scene_Ball());
+    scenes.add(new Scene_Shapes());
     scenes.add(new Scene_Brooke());
     scenes.add(new Scene_Isabelle());
     scenes.add(new Scene_Rain());

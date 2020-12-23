@@ -1,9 +1,9 @@
 //
-// Scene_Ball.pde
+// Scene_Shapes.pde
 //
 
 
-class Scene_Ball extends Scene
+class Scene_Shapes extends Scene
 {
     void initialize()
     {
