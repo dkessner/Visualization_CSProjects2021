@@ -7,14 +7,69 @@ class Scene_Shapes extends Scene
 {
     void initialize()
     {
+        shapes = new ArrayList<Shape>();
+        shapes.add(new Shape(new PVector(width/4, height/4), 3, 50, 50));
+        shapes.add(new Shape(new PVector(3*width/4, height/4), 4, 50, 50));
+        shapes.add(new Shape(new PVector(width/4, 3*height/4), 5, 50, 50));
+        shapes.add(new Shape(new PVector(3*width/4, 3*height/4), 3, 50, 50));
     }
 
     void display(PGraphics pg, float musicLevel)
     {
-        int green = (int)map(musicLevel, 0, 1, 0, 255);
-        pg.fill(0, 128, green);    
-
-        float radius = 100 + musicLevel * 100;
-        pg.ellipse(pg.width/2, pg.height/2, radius*2, radius*2);
+        for (Shape s : shapes)
+            s.display(pg, musicLevel);
     }
+
+    ArrayList<Shape> shapes;
 }
+
+
+
+class Shape
+{
+    Shape(PVector position, int n, float minRadius, float maxRadius)
+    {
+        this.position = position;
+        vertices = new ArrayList<PVector>();
+        strokeColor = randomColor();
+        do {fillColor = randomColor();} while (fillColor == strokeColor);
+
+        float initialAngle = random(2*PI);
+
+        for (int i=0; i<n; i++)
+        {
+            float angle = initialAngle + 2*PI*i/n;
+            PVector vertex = PVector.fromAngle(angle);
+            vertex.setMag(random(minRadius, maxRadius));
+            vertices.add(vertex);
+        }
+    }
+
+    void display(PGraphics pg, float musicLevel)
+    {
+        pg.stroke(strokeColor);
+        pg.strokeWeight(10);
+        pg.fill(fillColor);
+
+        pg.pushMatrix();
+        pg.translate(position.x, position.y);
+
+        pg.scale(1 + musicLevel);
+        
+        pg.beginShape();
+        for (PVector v : vertices)
+            pg.vertex(v.x, v.y);
+        pg.endShape(CLOSE);
+
+        pg.popMatrix();
+    }
+
+    PVector position;
+    ArrayList<PVector> vertices;
+    int strokeColor, fillColor;
+
+    int[] palette = {#e6d021, #e29e28, #d7573b, #73a5a8, #646199};    
+    int randomColor() {return palette[(int)random(palette.length)];}
+}
+
+
