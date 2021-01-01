@@ -18,6 +18,10 @@ class Scene_Shapes extends Scene
     {
         for (Shape s : shapes)
             s.display(pg, musicLevel);
+
+        pg.fill(255);
+        pg.noStroke();
+        pg.rect(0, height*(1-musicLevel), 10, height*musicLevel);
     }
 
     ArrayList<Shape> shapes;
