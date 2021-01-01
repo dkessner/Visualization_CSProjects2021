@@ -12,6 +12,8 @@ class Scene_Shapes extends Scene
         shapes.add(new Shape(new PVector(3*width/4, height/4), 4, 50, 50));
         shapes.add(new Shape(new PVector(width/4, 3*height/4), 5, 30, 80));
         shapes.add(new Shape(new PVector(3*width/4, 3*height/4), 6, 50, 50));
+
+        bg = new BallGenerator(new PVector(width/2, height/2));
     }
 
     void display(PGraphics pg, float musicLevel)
@@ -22,9 +24,12 @@ class Scene_Shapes extends Scene
         pg.fill(255);
         pg.noStroke();
         pg.rect(0, height*(1-musicLevel), 10, height*musicLevel);
+
+        bg.display(pg, musicLevel);
     }
 
     ArrayList<Shape> shapes;
+    BallGenerator bg;
 }
 
 
