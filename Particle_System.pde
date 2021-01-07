@@ -23,7 +23,7 @@ class ParticleSystem
     for (int i = particles.size()-1; i>=0; i--)
     {
       Particle p = particles.get(i);
-      p.run(pg, level, n, c);
+      p.display(pg, level, r, n, c);
       if (p.isDead())
         particles.remove(i);
     }
@@ -49,12 +49,6 @@ class Particle
     r = 3+1.2*level;
   }
   
-  void run(PGraphics pg, float level, int n, color c)
-  {
-    update();
-    display(pg, level, r, n, c);
-  }
-  
   void update()
   {
     v.add(a);
@@ -77,6 +71,7 @@ class Particle
       pg.ellipse(pos.x, pos.y + i*2, i+r/2, i+r/2);
     }
     r*=.98;
+    update();
   }
   
   boolean isDead()
