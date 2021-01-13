@@ -102,5 +102,8 @@ void keyPressed()
     {
         highestLevel = 0;
     }
-    
+    else
+    {
+        currentScene.keyPressed();
+    }
 }

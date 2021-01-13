@@ -3,6 +3,22 @@
 //
 
 
+void applyFilter(PGraphics pg)
+{
+    pg.loadPixels();
+
+    for (int i=0; i<height; i++)
+    for (int j=width/2; j<width; j++)
+    {
+        int index = i*width + j; 
+        int from = i*width + width-j; 
+        pg.pixels[index] = pg.pixels[from];
+    }
+
+    pg.updatePixels();
+}
+
+
 class Scene_Shapes extends Scene
 {
     void initialize()
@@ -26,10 +42,19 @@ class Scene_Shapes extends Scene
         pg.rect(0, height*(1-musicLevel), 10, height*musicLevel);
 
         bg.display(pg, musicLevel);
+
+        if (shouldApplyFilter)
+          applyFilter(pg);
+    }
+
+    void keyPressed()
+    {
+        shouldApplyFilter = !shouldApplyFilter;
     }
 
     ArrayList<Shape> shapes;
     BallGenerator bg;
+    boolean shouldApplyFilter = false;
 }
 
 
