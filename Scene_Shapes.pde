@@ -32,6 +32,9 @@ class Scene_Shapes extends Scene
 
         if (greyscale)
           applyGreyscaleFilter(pg);
+        
+        if(purple)
+          applyPurpleFilter(pg);
     }
 
     void keyPressed()
@@ -40,6 +43,8 @@ class Scene_Shapes extends Scene
             mirror = !mirror;
         if (key == 'g')
             greyscale = !greyscale;
+        if (key == 'u')
+            purple = !purple;
 
     }
 
@@ -48,6 +53,7 @@ class Scene_Shapes extends Scene
 
     boolean mirror = false;
     boolean greyscale = false;
+    boolean purple = false;
 }
 
 
@@ -123,5 +129,3 @@ class Shape
     int[] palette = {#e6d021, #e29e28, #d7573b, #73a5a8, #646199};    
     int randomColor() {return palette[(int)random(palette.length)];}
 }
-
-

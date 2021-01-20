@@ -59,4 +59,20 @@ void applyGreyscaleFilter(PGraphics pg)
     pg.updatePixels();
 }
 
+void applyPurpleFilter(PGraphics pg)
+{
+    pg.loadPixels();
+    for (int i=0; i<pg.pixels.length; i++)
+    {
+        int c = pg.pixels[i];
+        int a = (c & 0xff000000) >> 8;
+        int r = (c & 0x00ff0000) >> 16;
+        int g = (c & 0x0000ff00) >> 16;
+        int b = c & 0x000000ff;
 
+        int m = (r+g+b)/3;
+
+        pg.pixels[i] = (a<<8) | (m<<16) | (m<<16) | m;
+    }
+    pg.updatePixels();
+}
