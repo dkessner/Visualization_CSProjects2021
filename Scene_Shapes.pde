@@ -38,6 +38,7 @@ class Scene_Shapes extends Scene
         
         if(green)
           applyGreenFilter(pg);
+        
     }
 
     void keyPressed()
@@ -51,6 +52,7 @@ class Scene_Shapes extends Scene
         if (key == 'l')
             green = !green;
 
+
     }
 
     ArrayList<Shape> shapes;
@@ -60,6 +62,7 @@ class Scene_Shapes extends Scene
     boolean greyscale = false;
     boolean purple = false;
     boolean green = false;
+  
 }
 
 
