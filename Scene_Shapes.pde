@@ -35,6 +35,9 @@ class Scene_Shapes extends Scene
         
         if(purple)
           applyPurpleFilter(pg);
+        
+        if(green)
+          applyGreenFilter(pg);
     }
 
     void keyPressed()
@@ -45,6 +48,8 @@ class Scene_Shapes extends Scene
             greyscale = !greyscale;
         if (key == 'u')
             purple = !purple;
+        if (key == 'l')
+            green = !green;
 
     }
 
@@ -54,6 +59,7 @@ class Scene_Shapes extends Scene
     boolean mirror = false;
     boolean greyscale = false;
     boolean purple = false;
+    boolean green = false;
 }
 
 

@@ -76,3 +76,20 @@ void applyPurpleFilter(PGraphics pg)
     }
     pg.updatePixels();
 }
+
+void applyGreenFilter(PGraphics pg){
+    pg.loadPixels();
+    for (int i=0; i<pg.pixels.length; i++)
+    {
+        int c = pg.pixels[i];
+        int a = (c & 0xff000000) >> 16;
+        int r = (c & 0x00ff0000) >> 8;
+        int g = (c & 0x0000ff00) >> 8;
+        int b = (c & 0x000000ff) >> 0;
+
+        int m = (r+g+b)/3;
+
+        pg.pixels[i] = (a<<16) | (m<<8) | (m<<8) | m;
+    }
+    pg.updatePixels();
+}
