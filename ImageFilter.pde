@@ -93,3 +93,34 @@ void applyGreenFilter(PGraphics pg){
     }
     pg.updatePixels();
 }
+
+void applyBlurFilter(PGraphics pg){
+  pg.loadPixels();
+  for(int i=0; i<height; i++){
+    for(int j=0; j<width; j++){
+      int total = 0;
+      int count = 0;
+      
+      if(j-1>0 && i-1>0 && j+1<width && i+1<height){
+        total += pg.pixels[(i-1)*width+(j-1)];
+        total += pg.pixels[(i)*width+(j-1)];
+        total += pg.pixels[(i+1)*width+(j-1)];
+        total += pg.pixels[(i+1)*width+(j)];
+        total += pg.pixels[(i+1)*width+(j+1)];
+        total += pg.pixels[(i)*width+(j+1)];
+        total += pg.pixels[(i-1)*width+(j+1)];
+        total += pg.pixels[(i-1)*width+(j)];
+        total += pg.pixels[(i)*width+(j)];
+        count = 9;
+        
+        pg.pixels[i*width+j] = total/count;
+      }
+      
+      else{
+        continue;
+      }
+    } 
+  }
+  pg.updatePixels();
+  
+}

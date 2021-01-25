@@ -38,6 +38,9 @@ class Scene_Shapes extends Scene
         
         if(green)
           applyGreenFilter(pg);
+          
+        if(blur)
+          applyBlurFilter(pg);
         
     }
 
@@ -51,6 +54,8 @@ class Scene_Shapes extends Scene
             purple = !purple;
         if (key == 'l')
             green = !green;
+        if (key=='b')
+            blur = !blur;
 
 
     }
@@ -62,6 +67,7 @@ class Scene_Shapes extends Scene
     boolean greyscale = false;
     boolean purple = false;
     boolean green = false;
+    boolean blur = false;
   
 }
 
