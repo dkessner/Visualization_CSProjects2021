@@ -94,47 +94,37 @@ void applyGreenFilter(PGraphics pg){
     pg.updatePixels();
 }
 
-void applyBlurFilter(PGraphics pg){
+void applyBlurFilter(PGraphics pg, int radius){
   pg.loadPixels();
   
   for(int i=0; i<height; i++){
     for(int j=0; j<width; j++){
       
-      if(i-1>0 && j-1>0 && i+1<height && j+1<width){
+      if(i-radius>0 && j-radius>0 && i+radius<height && j+radius<width){
       
       int aTotal = 0;
       int rTotal = 0;
       int gTotal = 0;
       int bTotal = 0;
+      int count = 0;
       
-      for(int k=i-1; k<i+2; k++){
-        for(int m=j-1; m<j+2; m++){
+      for(int k=i-radius; k<i+(radius+1); k++){
+        for(int m=j-radius; m<j+(radius+1); m++){
           aTotal += getA(pg.pixels[k+width+m]);
           rTotal += getR(pg.pixels[k*width+m]);
           gTotal += getG(pg.pixels[k*width+m]);
           bTotal += getB(pg.pixels[k*width+m]);
+          count ++;
         }
       }
       
-      int a = aTotal/9;
-      int r = rTotal/9;
-      int g = gTotal/9;
-      int b = bTotal/9;
+      int a = aTotal/count;
+      int r = rTotal/count;
+      int g = gTotal/count;
+      int b = bTotal/count;
       
       pg.pixels[i*width+j] = (a<<24) | (r<<16) | (g<<8) | b;
       
-    /*  if(j-1>0 && i-1>0 && j+1<width && i+1<height){
-        total += pg.pixels[(i-1)*width+(j-1)];
-        total += pg.pixels[(i)*width+(j-1)];
-        total += pg.pixels[(i+1)*width+(j-1)];
-        total += pg.pixels[(i+1)*width+(j)];
-        total += pg.pixels[(i+1)*width+(j+1)];
-        total += pg.pixels[(i)*width+(j+1)];
-        total += pg.pixels[(i-1)*width+(j+1)];
-        total += pg.pixels[(i-1)*width+(j)];
-        total += pg.pixels[(i)*width+(j)];
-        count = 9;
-     */
       }
       
       else{

@@ -40,7 +40,7 @@ class Scene_Shapes extends Scene
           applyGreenFilter(pg);
           
         if(blur)
-          applyBlurFilter(pg);
+          applyBlurFilter(pg, (int)(musicLevel*50));
         
     }
 
@@ -68,6 +68,8 @@ class Scene_Shapes extends Scene
     boolean purple = false;
     boolean green = false;
     boolean blur = false;
+    
+    int blurRadius = 3;
   
 }
 
@@ -143,4 +145,5 @@ class Shape
 
     int[] palette = {#e6d021, #e29e28, #d7573b, #73a5a8, #646199};    
     int randomColor() {return palette[(int)random(palette.length)];}
+   
 }
