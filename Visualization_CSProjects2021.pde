@@ -12,10 +12,11 @@ AudioInput microphone;
 AudioSource source; // either file or microphone
 float highestLevel = 1e-6;
 
-
 ArrayList<Scene> scenes;
 Scene currentScene;
 
+Scene_Shapes sceneShapes;
+Scene_Rain sceneRain;
 
 PGraphics offscreenBuffer;
 
@@ -29,16 +30,24 @@ void setup()
 
     scenes = new ArrayList<Scene>();
     scenes.add(new Scene_Title());
-    scenes.add(new Scene_Shapes());
+
+    sceneShapes = new Scene_Shapes();
+    scenes.add(sceneShapes); // 1
+
     scenes.add(new Scene_Brooke());
     scenes.add(new Scene_Isabelle());
-    scenes.add(new Scene_Rain());
+
+    sceneRain = new Scene_Rain();
+    scenes.add(sceneRain); // 4
+
     scenes.add(new Scene_Velocity());
     scenes.add(new Scene_Amber());
     scenes.add(new Scene_Explosion());
 
+    scenes.add(new Scene_Quad(sceneShapes, sceneRain, sceneRain, sceneShapes)); // 8
+
     currentScene = scenes.get(0);
-    currentScene.initialize();
+    currentScene.initialize(offscreenBuffer);
 }
 
 
@@ -82,7 +91,7 @@ void keyPressed()
         if (index < scenes.size())
         {
           currentScene = scenes.get(index);
-          currentScene.initialize();
+          currentScene.initialize(offscreenBuffer);
         }
     }
     else if (key == 'p')

@@ -4,7 +4,7 @@ class Scene_Explosion extends Scene{
   PVector origin;
   float level;
   
-  void initialize(){
+  void initialize(PGraphics pg){
     origin = new PVector(width/2, height/2);
     ps1 = new ParticleSystem(origin);
   }

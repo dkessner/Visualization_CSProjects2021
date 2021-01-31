@@ -5,7 +5,7 @@
 
 class Scene_Rain extends Scene
 {
-    void initialize()
+    void initialize(PGraphics pg)
     {
       p = new ParticleSystem(new PVector (width/2, 50));
     }

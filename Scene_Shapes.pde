@@ -5,15 +5,15 @@
 
 class Scene_Shapes extends Scene
 {
-    void initialize()
+    void initialize(PGraphics pg) 
     {
         shapes = new ArrayList<Shape>();
-        shapes.add(new Shape(new PVector(width/4, height/4), 3, 30, 100));
-        shapes.add(new Shape(new PVector(3*width/4, height/4), 4, 50, 50));
-        shapes.add(new Shape(new PVector(width/4, 3*height/4), 5, 30, 80));
-        shapes.add(new Shape(new PVector(3*width/4, 3*height/4), 6, 50, 50));
+        shapes.add(new Shape(new PVector(pg.width/4, pg.height/4), 3, pg.width/30, pg.width/10));
+        shapes.add(new Shape(new PVector(3*pg.width/4, pg.height/4), 4, pg.width/20, pg.width/20));
+        shapes.add(new Shape(new PVector(pg.width/4, 3*pg.height/4), 5, pg.width/30, pg.width/12));
+        shapes.add(new Shape(new PVector(3*pg.width/4, 3*pg.height/4), 6, pg.width/20, pg.width/20));
 
-        bg = new BallGenerator(new PVector(width/2, height/2));
+        bg = new BallGenerator(new PVector(pg.width/2, pg.height/2));
     }
 
     void display(PGraphics pg, float musicLevel)
@@ -23,7 +23,7 @@ class Scene_Shapes extends Scene
 
         pg.fill(255);
         pg.noStroke();
-        pg.rect(0, height*(1-musicLevel), 10, height*musicLevel);
+        pg.rect(0, pg.height*(1-musicLevel), 10, pg.height*musicLevel);
 
         bg.display(pg, musicLevel);
 
@@ -40,8 +40,7 @@ class Scene_Shapes extends Scene
           applyGreenFilter(pg);
           
         if(blur)
-          applyBlurFilter(pg, (int)(musicLevel*50));
-        
+          applyBlurFilter(pg, (int)(musicLevel*7));
     }
 
     void keyPressed()
@@ -96,8 +95,10 @@ class Shape
 
     void display(PGraphics pg, float musicLevel)
     {
+        int strokeWidth = pg.width/100;
+
         pg.stroke(strokeColor);
-        pg.strokeWeight(10);
+        pg.strokeWeight(strokeWidth);
         pg.fill(fillColor);
 
         pg.pushMatrix();

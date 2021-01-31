@@ -2,7 +2,7 @@
 class Scene_Isabelle extends Scene{
   ArrayList<Ball> balls = new ArrayList<Ball>();
   
-  void initialize(){
+  void initialize(PGraphics pg){
     
   }
   

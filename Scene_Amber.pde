@@ -7,7 +7,7 @@ class Scene_Amber extends Scene
   int explosionIndex = 0;
 
   
-  void initialize()
+  void initialize(PGraphics pg)
   {
     //imageMode(CENTER);
 

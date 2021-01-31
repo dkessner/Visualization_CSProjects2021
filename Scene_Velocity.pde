@@ -8,7 +8,7 @@ float r = 50;
 
 class Scene_Velocity extends Scene
 {
-    void initialize()
+    void initialize(PGraphics pg)
     {
     }
 

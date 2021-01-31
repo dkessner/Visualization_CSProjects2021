@@ -3,7 +3,7 @@
 
 class Scene_Brooke extends Scene
 {
-  void initialize()
+  void initialize(PGraphics pg)
     {
       
     }

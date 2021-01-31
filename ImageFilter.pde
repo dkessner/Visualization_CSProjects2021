@@ -7,11 +7,11 @@ void applyMirrorFilter(PGraphics pg)
 {
     pg.loadPixels();
 
-    for (int i=0; i<height; i++)
-    for (int j=width/2; j<width; j++)
+    for (int i=0; i<pg.height; i++)
+    for (int j=pg.width/2; j<pg.width; j++)
     {
-        int index = i*width + j; 
-        int from = i*width + width-j; 
+        int index = i*pg.width + j; 
+        int from = i*pg.width + pg.width-j; 
         pg.pixels[index] = pg.pixels[from];
     }
 

@@ -5,7 +5,7 @@
 
 class Scene_Title extends Scene
 {
-    void initialize()
+    void initialize(PGraphics pg)
     {
     }
 
