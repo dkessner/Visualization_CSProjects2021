@@ -13,7 +13,7 @@ class Scene_Amber extends Scene
   
   void initialize(PGraphics pg)
   {
-    size(600,600, P3D);
+    //size(600,600, P3D);
     cols = w / scl;
     rows = h/scl;
     terrain = new float[rows][cols];

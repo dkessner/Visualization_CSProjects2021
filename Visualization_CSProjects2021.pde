@@ -23,8 +23,8 @@ PGraphics offscreenBuffer;
 
 void setup()
 {
-    size(800, 600);
-    offscreenBuffer = createGraphics(width, height);
+    size(800, 600, P3D);
+    offscreenBuffer = createGraphics(width, height, P3D);
 
     initializeAudio();
 
@@ -34,14 +34,14 @@ void setup()
     sceneShapes = new Scene_Shapes();
     scenes.add(sceneShapes); // 1
 
-    scenes.add(new Scene_Brooke());
-    scenes.add(new Scene_Isabelle());
+    scenes.add(new Scene_Brooke()); // 2
+    scenes.add(new Scene_Isabelle()); // 3
 
     sceneRain = new Scene_Rain();
     scenes.add(sceneRain); // 4
 
-    scenes.add(new Scene_Velocity());
-    scenes.add(new Scene_Amber());
+    scenes.add(new Scene_Velocity()); // 5
+    scenes.add(new Scene_Amber()); // 6
     scenes.add(new Scene_Explosion());
 
     scenes.add(new Scene_Quad(sceneShapes, sceneRain, sceneRain, sceneShapes)); // 8
