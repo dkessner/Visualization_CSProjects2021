@@ -75,7 +75,6 @@ void draw()
     // draw
 
     offscreenBuffer.beginDraw();
-    offscreenBuffer.background(0);
     currentScene.display(offscreenBuffer, level);
     offscreenBuffer.endDraw();
 

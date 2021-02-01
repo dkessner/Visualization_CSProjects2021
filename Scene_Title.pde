@@ -11,6 +11,7 @@ class Scene_Title extends Scene
 
     void display(PGraphics pg, float musicLevel)
     {
+        pg.background(0);
         int green = (int)map(musicLevel, 0, 1, 0, 255);
         pg.fill(0, 128, green);    
         pg.stroke(0);

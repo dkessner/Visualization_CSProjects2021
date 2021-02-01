@@ -7,6 +7,7 @@ class Scene_Isabelle extends Scene{
   }
   
   void display(PGraphics pg, float musicLevel){
+    pg.background(0);
     int num = (int)map(musicLevel, 0, 1, 1, 20);
     float r = random(num*2, num*8);
     float r2 = r*2;

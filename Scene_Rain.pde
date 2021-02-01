@@ -12,6 +12,7 @@ class Scene_Rain extends Scene
 
    void display(PGraphics pg, float musicLevel)
     {
+       pg.background(0);
        float level = musicLevel*100;
        pg.fill(255);
        pg.text("level: " + level, 4*width/5-10, height/12);

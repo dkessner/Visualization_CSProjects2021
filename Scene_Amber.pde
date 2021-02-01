@@ -30,6 +30,7 @@ class Scene_Amber extends Scene
   
   void display(PGraphics pg, float musicLevel)
   {
+    pg.background(0);
     flying -=0.1;
   
     float yoff = flying;

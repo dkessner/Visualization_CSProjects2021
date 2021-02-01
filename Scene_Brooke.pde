@@ -9,43 +9,45 @@ class Scene_Brooke extends Scene
   void initialize(PGraphics pg)
   {
     //fullScreen(P3D);
-    depth=width;
+    depth=pg.width;
 
     frameRate(20);
-    background (0);
-    colorMode(HSB,800,100,100);
+    pg.background (0);
+    pg.colorMode(HSB,800,100,100);
 
     for (int i=0; i<n; i++)
     {
-       line[i]=new Line(random(width)-width/2, random(height)-height/2, random(depth)-depth/2, 20);
+       line[i]=new Line(pg, random(width)-width/2, random(height)-height/2, random(depth)-depth/2, 20);
     }
-   
-    
+
+    pg.background(0);
       
    }
   
   void display(PGraphics pg, float musicLevel)
   {
-    /*
-    pushMatrix();
-    translate(width/2, height/2,0);
+
+    pg.pushMatrix();
+    pg.translate(width/2, height/2,0);
   
    for (int i=0; i<n; i++)
    {
      line[i].move();
-     popMatrix();
    }
-   */
+
    
+     pg.popMatrix();
     
   }
   
   class Line
 {
+  PGraphics pg;
   float time = radians(frameCount);
   float px, py, pz, x, y, z, l;
-  Line(float inx, float iny, float inz, float inl) 
+  Line(PGraphics pg, float inx, float iny, float inz, float inl) 
   {
+    this.pg = pg;
     px=x=inx;
     py=y=iny;
     pz=z=inz;
@@ -78,12 +80,12 @@ class Scene_Brooke extends Scene
     
 
  float hue = 360 * sqrt( sq(x - width/2) + sq(y - height/2)) / max(width/2,height/2);
- stroke(hue, 255, 255);
+ pg.stroke(hue, 255, 255);
  
-   line(px, py, pz, x, y, z);
+   pg.line(px, py, pz, x, y, z);
 
-   if ((x>width/2)||(x<-width/2)) x=random(width)-width/2;
-   if ((y>height/2)||(y<-height/2))y=random (height)-height/2;
+   if ((x>pg.width/2)||(x<-pg.width/2)) x=random(pg.width)-pg.width/2;
+   if ((y>pg.height/2)||(y<-pg.height/2))y=random (pg.height)-pg.height/2;
    if ((z>depth/2)||(z<-depth/2)) z=random (depth)-depth/2;
     px=x;
     py=y;

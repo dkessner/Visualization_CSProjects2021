@@ -47,7 +47,6 @@ class Scene_Quad extends Scene
 
             PGraphics quadrant = quadrants.get(i);
             quadrant.beginDraw();
-            quadrant.background(0);
             s.display(quadrant, musicLevel);
             quadrant.endDraw();
         }

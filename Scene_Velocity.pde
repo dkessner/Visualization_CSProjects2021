@@ -13,8 +13,8 @@ class Scene_Velocity extends Scene
     }
 
     void display(PGraphics pg, float musicLevel)
-    {
-      
+    { 
+        pg.background(0); 
         pg.fill(255);
         pg.ellipse(x, y, r, r);
         

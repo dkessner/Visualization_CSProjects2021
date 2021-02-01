@@ -18,6 +18,7 @@ class Scene_Shapes extends Scene
 
     void display(PGraphics pg, float musicLevel)
     {
+        pg.background(0);
         for (Shape s : shapes)
             s.display(pg, musicLevel);
 
