@@ -90,7 +90,11 @@ void keyPressed()
         if (index < scenes.size())
         {
           currentScene = scenes.get(index);
+
+          offscreenBuffer.beginDraw();
+          offscreenBuffer.background(0);
           currentScene.initialize(offscreenBuffer);
+          offscreenBuffer.endDraw();
         }
     }
     else if (key == 'p')
