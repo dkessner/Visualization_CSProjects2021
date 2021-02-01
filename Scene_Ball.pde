@@ -3,9 +3,9 @@
 //
 
 
-class Scene_Ball implements Scene
+class Scene_Ball extends Scene
 {
-    void initialize()
+    void initialize(PGraphics pg)
     {
     }
 

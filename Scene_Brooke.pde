@@ -6,9 +6,9 @@ class Scene_Brooke extends Scene
   int n=5;
   float depth;
   Line[] line = new Line[n];
-  void initialize()
+  void initialize(PGraphics pg)
   {
-    fullScreen(P3D);
+    //fullScreen(P3D);
     depth=width;
 
     frameRate(20);
@@ -26,6 +26,7 @@ class Scene_Brooke extends Scene
   
   void display(PGraphics pg, float musicLevel)
   {
+    /*
     pushMatrix();
     translate(width/2, height/2,0);
   
@@ -34,6 +35,7 @@ class Scene_Brooke extends Scene
      line[i].move();
      popMatrix();
    }
+   */
    
     
   }
