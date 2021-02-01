@@ -1,48 +1,63 @@
 
 class Scene_Amber extends Scene
 {
-  PImage[] explosion = new PImage[17];
-
-  boolean exploding = false;
-  int explosionIndex = 0;
+  int cols, rows;
+  int scl = 20;
+  int w = 2000;
+  int h = 1600;
+  
+  float flying = 0;
+  
+  float[][] terrain;
 
   
   void initialize(PGraphics pg)
   {
-    //imageMode(CENTER);
-
-    for (int i=0; i<explosion.length; i++)
-        explosion[i] = loadImage("data/explode" + i + ".png");
+    size(600,600, P3D);
+    cols = w / scl;
+    rows = h/scl;
+    terrain = new float[rows][cols];
+    float yoff = 0;
+    for(int y = 0; y < rows; y++) {
+     float xoff = 0;
+     for(int x = 0; x < cols; x++) {
+       terrain[y][x] = map(noise(yoff, xoff), 0, 1, -100, 100);
+       xoff += 0.2;
+     }
+     yoff += 0.2;
+    }
   }
   
   void display(PGraphics pg, float musicLevel)
   {
-    background(0);
-
-    if (exploding == true)
-    {
-        if (explosionIndex < explosion.length)
-        {
-            image(explosion[explosionIndex], width/2, height/2);
-        }
-        if (frameCount%10 == 0)
-          explosionIndex++;
-        
-    }
-  }
+    flying -=0.1;
   
-  /*
-  void mousePressed()
-  {
-    if (exploding == true)
-    {
-        exploding = false;
+    float yoff = flying;
+    for(int y = 0; y < rows; y++) {
+     float xoff = 0;
+     for(int x = 0; x < cols; x++) {
+       terrain[y][x] = map(noise(yoff, xoff), 0, 1, -100, 100);
+       xoff += 0.2;
+     }
+     yoff += 0.2;
     }
-    else 
-    {
-        exploding = true;
-        explosionIndex = 0;
-    }
+    
+    background(0);
+    noFill(); 
+    colorMode(HSB, 2*PI, 1, 1);
+    stroke((millis()/500.)%(2*PI), 1, 1);
+    
+    translate(width/2, height/2+50);
+    rotateX(PI/3);
+   
+   translate(-w/2, -h/2);
+   for(int y = 0; y < rows-1; y++) {
+     beginShape(TRIANGLE_STRIP);
+     for(int x = 0; x < cols; x++) {
+       vertex(x*scl, y*scl, terrain[y][x]);
+       vertex(x*scl, (y+1)*scl, terrain[y+1][x]);
+     }
+     endShape();
+   }
   }
-  */
 }
