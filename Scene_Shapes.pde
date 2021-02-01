@@ -135,6 +135,8 @@ class Shape
             factor = targetFactor;
         else
             factor *= .95;
+
+        pg.strokeWeight(1);
     }
 
     PVector position;

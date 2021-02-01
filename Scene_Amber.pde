@@ -42,22 +42,22 @@ class Scene_Amber extends Scene
      yoff += 0.2;
     }
     
-    background(0);
-    noFill(); 
-    colorMode(HSB, 2*PI, 1, 1);
-    stroke((millis()/500.)%(2*PI), 1, 1);
+    pg.background(0);
+    pg.noFill(); 
+    pg.colorMode(HSB, 2*PI, 1, 1);
+    pg.stroke((millis()/500.)%(2*PI), 1, 1);
     
-    translate(width/2, height/2+50);
-    rotateX(PI/3);
+    pg.translate(pg.width/2, pg.height/2+50);
+    pg.rotateX(PI/3);
    
-   translate(-w/2, -h/2);
+   pg.translate(-w/2, -h/2);
    for(int y = 0; y < rows-1; y++) {
-     beginShape(TRIANGLE_STRIP);
+     pg.beginShape(TRIANGLE_STRIP);
      for(int x = 0; x < cols; x++) {
-       vertex(x*scl, y*scl, terrain[y][x]);
-       vertex(x*scl, (y+1)*scl, terrain[y+1][x]);
+       pg.vertex(x*scl, y*scl, terrain[y][x]);
+       pg.vertex(x*scl, (y+1)*scl, terrain[y+1][x]);
      }
-     endShape();
+     pg.endShape();
    }
   }
 }
