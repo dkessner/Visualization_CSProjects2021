@@ -121,3 +121,7 @@ void keyPressed()
         currentScene.keyPressed();
     }
 }
+void keyReleased()
+{
+  currentScene.keyReleased();
+}

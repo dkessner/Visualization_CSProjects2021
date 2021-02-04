@@ -6,7 +6,7 @@ class Scene_Water extends Scene
 {
     void initialize(PGraphics pg)
     {
-        
+        water = loadImage("waterSurface.jpg");
     }
   
     void display(PGraphics pg, float musicLevel) 
@@ -97,6 +97,8 @@ float ry = 0;
 float rz = 0;
 float vx, vy, vz;
 
+private PImage water;
+
 void standardAxesTransformation(PGraphics pg)
 {
     pg.scale(1, -1, 1);
@@ -147,16 +149,20 @@ void drawSurface(float time, PGraphics pg)
   pg.stroke(0, 200, 200);
   pg.strokeWeight(1);
   pg.noFill();
+  
 
   for (float i = -subdivisionCount; i <= subdivisionCount; i++)
   {
     pg.beginShape();
+    //pg.tint(0,255,0);
     float x = i*gridSize;
     for (float j = -subdivisionCount; j <= subdivisionCount; j++)
     {
       float y = j*gridSize;
       float z = n(i,j,time)*gridSize;
-      pg.vertex(x, y, z);
+      //pg.tint(255,0,0);
+      pg.texture(water);
+      pg.vertex(x, y, z, -100,100);
     }
     pg.endShape();
   }
@@ -169,7 +175,9 @@ void drawSurface(float time, PGraphics pg)
     {
       float z = n(i,j,time)*gridSize;
       float x = i*gridSize;
-      pg.vertex(x, y, z);
+      //pg.tint(255,0,0);
+      pg.texture(water);
+      pg.vertex(x, y, z, 0, 200);
     }
     pg.endShape();
   }

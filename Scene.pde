@@ -9,4 +9,5 @@ abstract class Scene
     abstract void display(PGraphics pg, float musicLevel);
     
     void keyPressed(){};
+    void keyReleased(){};
 }
