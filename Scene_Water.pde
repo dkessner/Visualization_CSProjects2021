@@ -54,11 +54,11 @@ class Scene_Water extends Scene
         {
           vx=-.05;
         }
-        else if (key == 'a')
+        else if (key == 'q')
         {
           vz=.05;
         }
-        else if (key == 'z')
+        else if (key == 'a')
         {
           vz=-.05;
         }
