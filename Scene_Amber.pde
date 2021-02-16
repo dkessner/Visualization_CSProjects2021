@@ -47,7 +47,7 @@ class Scene_Amber extends Scene
     
     pg.background(0);
     pg.noFill(); 
-    pg.stroke(255);
+    pg.stroke(0);
     //pg.colorMode(HSB, 2*PI, 1, 1);
     //pg.stroke((millis()/500.)%(2*PI), 1, 1);
     
@@ -60,7 +60,7 @@ class Scene_Amber extends Scene
        pg.texture(img);
        for(int x = 0; x < cols; x++) {
          pg.vertex(x*scl, y*scl, terrain[y][x], x, y);
-         pg.vertex(x*scl, (y+1)*scl, terrain[y+1][x], y, y);
+         pg.vertex(x*scl, (y+1)*scl, terrain[y+1][x], x, y);
        }
        pg.endShape();
      }
