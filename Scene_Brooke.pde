@@ -3,7 +3,7 @@
 
 class Scene_Brooke extends Scene
 {
-  int n=5;
+  int n=4;
   float depth;
   Line[] line = new Line[n];
   void initialize(PGraphics pg)
@@ -14,7 +14,8 @@ class Scene_Brooke extends Scene
     frameRate(20);
     pg.background (0);
     pg.colorMode(HSB,800,100,100);
-
+    file.loop();
+    
     for (int i=0; i<n; i++)
     {
        line[i]=new Line(pg, random(width)-width/2, random(height)-height/2, random(depth)-depth/2, 20);
@@ -44,14 +45,14 @@ class Scene_Brooke extends Scene
 {
   PGraphics pg;
   float time = radians(frameCount);
-  float px, py, pz, x, y, z, l;
+  float px, py, pz, x, y, z, velocity;
   Line(PGraphics pg, float inx, float iny, float inz, float inl) 
   {
     this.pg = pg;
     px=x=inx;
     py=y=iny;
     pz=z=inz;
-    l=inl;
+    velocity=inl;
   }
 
   void move() 
@@ -59,28 +60,30 @@ class Scene_Brooke extends Scene
     switch (floor(random(3))) 
     {
     case 0: 
-      x+=l; 
+      x+=velocity; 
       break;
     case 1: 
-      x-=l; 
+      x-=velocity; 
       break;
     case 2: 
-      y+=l; 
+      y+=velocity; 
       break;
     case 3: 
-      y-=l; 
+      y-=velocity; 
       break;
     case 4: 
-      z+=l; 
+      z+=velocity; 
       break;
     case 5: 
-      z-=l; 
+      z-=velocity; 
       break;
     }
     
 
  float hue = 360 * sqrt( sq(x - width/2) + sq(y - height/2)) / max(width/2,height/2);
  pg.stroke(hue, 255, 255);
+ 
+  velocity = file.mix.level()*500;
  
    pg.line(px, py, pz, x, y, z);
 
