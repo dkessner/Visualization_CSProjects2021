@@ -15,7 +15,7 @@ class Scene_Amber extends Scene
   
   void initialize(PGraphics pg)
   {
-    img = loadImage("waterSurface.jpg");
+    img = loadImage("rock.jpeg");
     cols = w / scl;
     rows = h/scl;
     terrain = new float[rows][cols];
@@ -59,8 +59,8 @@ class Scene_Amber extends Scene
        pg.beginShape(TRIANGLE_STRIP);
        pg.texture(img);
        for(int x = 0; x < cols; x++) {
-         pg.vertex(x*scl, y*scl, terrain[y][x], x, y);
-         pg.vertex(x*scl, (y+1)*scl, terrain[y+1][x], x, y);
+         pg.vertex(x*scl, y*scl, terrain[y][x], x*2, y*2);
+         pg.vertex(x*scl, (y+1)*scl, terrain[y+1][x], x*2, y*2);
        }
        pg.endShape();
      }
