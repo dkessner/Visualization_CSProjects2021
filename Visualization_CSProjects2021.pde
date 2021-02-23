@@ -17,6 +17,8 @@ Scene currentScene;
 
 Scene_Shapes sceneShapes;
 Scene_Rain sceneRain;
+Scene_Brooke sceneBrooke;
+Scene_Amber sceneAmber;
 
 PGraphics offscreenBuffer;
 
@@ -33,20 +35,29 @@ void setup()
 
     sceneShapes = new Scene_Shapes();
     scenes.add(sceneShapes); // 1
-
+   
+    sceneBrooke = new Scene_Brooke();
     scenes.add(new Scene_Brooke()); // 2
+    
     scenes.add(new Scene_Isabelle()); // 3
 
     sceneRain = new Scene_Rain();
     scenes.add(sceneRain); // 4
 
     scenes.add(new Scene_Velocity()); // 5
+   
+    sceneAmber = new Scene_Amber();
     scenes.add(new Scene_Amber()); // 6
+   
     scenes.add(new Scene_Explosion());
 
     scenes.add(new Scene_Quad(sceneShapes, sceneRain, sceneRain, sceneShapes)); // 8
-
     scenes.add(new Scene_Water()); //9
+    
+ 
+    scenes.add(new Scene_Panel(sceneBrooke, sceneAmber));
+    
+   
 
     currentScene = scenes.get(0);
     currentScene.initialize(offscreenBuffer);
