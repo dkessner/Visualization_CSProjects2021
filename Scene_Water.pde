@@ -21,7 +21,8 @@ class Scene_Water extends Scene
         standardAxesTransformation(pg);
         drawAxes(pg);
         drawXYPlane(pg);
-        drawSurface(time, pg);
+        drawWater(time, pg);
+        drawTorus(time, pg);
         pg.popMatrix();
     
         rx+=vx;
@@ -97,6 +98,11 @@ float ry = 0;
 float rz = 0;
 float vx, vy, vz;
 
+float a = 3;
+float b = 1;
+
+float z1;
+
 private PImage water;
 
 void standardAxesTransformation(PGraphics pg)
@@ -144,13 +150,12 @@ float n (float x, float y, float time)
   return noise(x, y)*1.5;
 }
 
-void drawSurface(float time, PGraphics pg)
+void drawWater(float time, PGraphics pg)
 {
   pg.stroke(0, 200, 200);
   pg.strokeWeight(1);
   pg.noFill();
   
-
   for (float i = -subdivisionCount; i <= subdivisionCount; i++)
   {
     pg.beginShape();
@@ -178,6 +183,26 @@ void drawSurface(float time, PGraphics pg)
       //pg.tint(255,0,0);
       pg.texture(water);
       pg.vertex(x, y, z, 0, 200);
+      z1 = z;
+    }
+    pg.endShape();
+  }
+}
+void drawTorus(float time, PGraphics pg)
+{
+  pg.stroke(0, 200, 200);
+  pg.strokeWeight(1);
+  pg.noFill();
+
+  for (float u = 0; u <= 2*PI; u+=.035)
+  {
+    pg.beginShape();
+    for (float v = 0; v <= 2*PI; v+=.035)
+    {
+      float x = (a+b*cos(v))*cos(u)*gridSize;
+      float y = (a+b*cos(v))*sin(u)*gridSize;
+      float z = z1+b*sin(v)*gridSize+2;
+      pg.vertex(x, y, z);
     }
     pg.endShape();
   }
