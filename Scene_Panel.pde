@@ -26,7 +26,9 @@ class Scene_Panel extends Scene
             Scene s = scenes.get(i);
             if (s != null)
             {
+              panel.get(i).beginDraw();
               s.initialize(panel.get(i));
+              panel.get(i).endDraw();
             }
                 
         }
