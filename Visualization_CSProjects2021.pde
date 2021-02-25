@@ -110,6 +110,19 @@ void keyPressed()
           offscreenBuffer.endDraw();
         }
     }
+    else if (key == 'a')
+    {
+        int index = 10;
+        if (index < scenes.size())
+        {
+          currentScene = scenes.get(index);
+
+          offscreenBuffer.beginDraw();
+          offscreenBuffer.background(0);
+          currentScene.initialize(offscreenBuffer);
+          offscreenBuffer.endDraw();
+        }
+    }
     else if (key == 'p')
     {
         if (!file.isPlaying())
