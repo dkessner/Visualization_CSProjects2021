@@ -11,7 +11,6 @@ class Scene_Water extends Scene
   
     void display(PGraphics pg, float musicLevel) 
     {
-        //float level = musicLevel * 100;
         pg.background(0);
         pg.translate(width/2, height/2, tz);
         pg.rotateX(rx);
@@ -22,7 +21,7 @@ class Scene_Water extends Scene
         drawAxes(pg);
         drawXYPlane(pg);
         drawWater(time, pg);
-        drawTorus(time, pg);
+        drawTorus(pg);
         pg.popMatrix();
     
         rx+=vx;
@@ -35,6 +34,11 @@ class Scene_Water extends Scene
         pg.fill(255);
         pg.strokeWeight(3);
         pg.text("Time: " + time, 0, 100, 50);
+        
+        float level = musicLevel * 100;
+        if (level>10){
+          c = color(random(0,255), random(0,255), random(0,255));
+        }
     }
     void keyPressed()
     {
@@ -100,6 +104,9 @@ float vx, vy, vz;
 
 float a = 3;
 float b = 1;
+
+float n = 10;
+color c = color(0, 200, 200);
 
 float z1;
 
@@ -188,11 +195,13 @@ void drawWater(float time, PGraphics pg)
     pg.endShape();
   }
 }
-void drawTorus(float time, PGraphics pg)
+void drawTorus(PGraphics pg)
 {
-  pg.stroke(0, 200, 200);
+  //pg.stroke(0, 200, 200);
+  pg.stroke(c);
   pg.strokeWeight(1);
-  pg.noFill();
+  pg.fill(255,0,0);
+  //pg.noFill();
 
   for (float u = 0; u <= 2*PI; u+=.035)
   {
@@ -202,7 +211,9 @@ void drawTorus(float time, PGraphics pg)
       float x = (a+b*cos(v))*cos(u)*gridSize;
       float y = (a+b*cos(v))*sin(u)*gridSize;
       float z = z1+b*sin(v)*gridSize+2;
-      pg.vertex(x, y, z);
+      pg.texture(water);
+      pg.vertex(x, y, z, -100, 100);
+      //pg.vertex(x,y,z);
     }
     pg.endShape();
   }
