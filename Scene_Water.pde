@@ -7,10 +7,12 @@ class Scene_Water extends Scene
     void initialize(PGraphics pg)
     {
         water = loadImage("waterSurface.jpg");
+        startTime = millis();
     }
   
     void display(PGraphics pg, float musicLevel) 
     {
+        //surfaces
         pg.background(0);
         pg.translate(width/2, height/2, tz);
         pg.rotateX(rx);
@@ -23,7 +25,8 @@ class Scene_Water extends Scene
         drawWater(time, pg);
         drawTorus(pg);
         pg.popMatrix();
-    
+        
+        //rotations
         rx+=vx;
         ry+=vy;
         rz+=vz;
@@ -35,10 +38,47 @@ class Scene_Water extends Scene
         pg.strokeWeight(3);
         pg.text("Time: " + time, 0, 100, 50);
         
+        //torus changing colors
         float level = musicLevel * 100;
         if (level>10){
           c = color(random(0,255), random(0,255), random(0,255));
         }
+        
+        //switching scenes
+        //switchScenes(time, 3, 4);
+        //switchScenes(time, 6, 9);
+        if(time>5){
+          currentScene = scenes.get(4);
+          offscreenBuffer.beginDraw();
+          offscreenBuffer.background(0);
+          currentScene.initialize(offscreenBuffer);
+          offscreenBuffer.endDraw();
+        }
+        
+        /*else if(time>5)
+        {
+          currentScene = scenes.get(9);
+          offscreenBuffer.beginDraw();
+          offscreenBuffer.background(0);
+          currentScene.initialize(offscreenBuffer);
+          offscreenBuffer.endDraw();
+        }
+        /*if(time>3)
+          {
+            while(time<6)
+            {
+              currentScene = scenes.get(4);
+              offscreenBuffer.beginDraw();
+              offscreenBuffer.background(0);
+              currentScene.initialize(offscreenBuffer);
+              offscreenBuffer.endDraw();
+            }
+          }
+         currentScene = scenes.get(9);
+         offscreenBuffer.beginDraw();
+         offscreenBuffer.background(0);
+         currentScene.initialize(offscreenBuffer);
+         offscreenBuffer.endDraw();*/
     }
     void keyPressed()
     {
@@ -91,7 +131,7 @@ float gridSize = axesRadius/subdivisionCount;
 
 float noiseScale = .02;
 
-float startTime = millis();
+float startTime;
 float time;
 
 float tz = 0;
@@ -217,4 +257,20 @@ void drawTorus(PGraphics pg)
     }
     pg.endShape();
   }
+}
+void switchScenes(float time, float n, int index)
+{
+  while(time>n && time<n+3)
+  {
+     currentScene = scenes.get(index);
+     offscreenBuffer.beginDraw();
+     offscreenBuffer.background(0);
+     currentScene.initialize(offscreenBuffer);
+     offscreenBuffer.endDraw();  
+  }
+   currentScene = scenes.get(9);
+   offscreenBuffer.beginDraw();
+   offscreenBuffer.background(0);
+   currentScene.initialize(offscreenBuffer);
+   offscreenBuffer.endDraw();   
 }
