@@ -50,12 +50,14 @@ void setup()
     scenes.add(new Scene_Amber()); // 6
    
     scenes.add(new Scene_Explosion());
+    
+    scenes.add(new Scene_Panel(sceneBrooke, sceneAmber));
 
     scenes.add(new Scene_Quad(sceneShapes, sceneRain, sceneRain, sceneShapes)); // 8
     scenes.add(new Scene_Water()); //9
     
  
-    scenes.add(new Scene_Panel(sceneBrooke, sceneAmber));
+    
     
    
 
