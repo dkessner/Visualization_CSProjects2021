@@ -273,4 +273,16 @@ void switchScenes(float time, float n, int index)
    offscreenBuffer.background(0);
    currentScene.initialize(offscreenBuffer);
    offscreenBuffer.endDraw();   
+   /*
+  startTime = millis();
+  time = (millis()-startTime)/1000;
+  while(time<3)
+  {
+  }
+   currentScene = scenes.get(index);
+   offscreenBuffer.beginDraw();
+   offscreenBuffer.background(0);
+   currentScene.initialize(offscreenBuffer);
+   offscreenBuffer.endDraw();   
+   */
 }
