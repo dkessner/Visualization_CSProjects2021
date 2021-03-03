@@ -8,7 +8,7 @@ class Scene_Panel extends Scene
     scenes.add(top);
     scenes.add(bottom);
     
-    panel = new ArrayList<PGraphics>();    
+    panels = new ArrayList<PGraphics>();    
   }
   
   void initialize (PGraphics pg)
@@ -18,7 +18,7 @@ class Scene_Panel extends Scene
      
      for (int i=0; i<2; i++)
      {
-        panel.add(createGraphics(w,h));
+        panels.add(createGraphics(w,h));
      }
      
       for (int i=0; i<2; i++)
@@ -26,9 +26,9 @@ class Scene_Panel extends Scene
             Scene s = scenes.get(i);
             if (s != null)
             {
-              panel.get(i).beginDraw();
-              s.initialize(panel.get(i));
-              panel.get(i).endDraw();
+              panels.get(i).beginDraw();
+              s.initialize(panels.get(i));
+              panels.get(i).endDraw();
             }
                 
         }
@@ -41,18 +41,18 @@ class Scene_Panel extends Scene
         Scene s = scenes.get(i);
         if (s == null) continue;
         
-        PGraphics panels = panel.get(i);
-        panels.beginDraw();
-        s.display(panels, musicLevel);
-        panels.endDraw(); 
+        PGraphics panel = panels.get(i);
+        panel.beginDraw();
+        s.display(panel, musicLevel);
+        panel.endDraw(); 
      }
      
-      pg.image(panel.get(0), 0, 0);
-      pg.image(panel.get(1), pg.width/2, 0);
+      pg.image(panels.get(0), pg.height/2, 0);
+      pg.image(panels.get(1), 0, pg.height/2);
   }
   
     private ArrayList<Scene> scenes;
-    private ArrayList<PGraphics> panel;
+    private ArrayList<PGraphics> panels;
 
     void keyPressed(){};
   
