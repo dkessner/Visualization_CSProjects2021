@@ -18,7 +18,7 @@ class Scene_Panel extends Scene
      
      for (int i=0; i<2; i++)
      {
-        panels.add(createGraphics(w,h));
+        panels.add(createGraphics(w,h, P3D));
      }
      
       for (int i=0; i<2; i++)
