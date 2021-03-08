@@ -20,6 +20,11 @@ Scene_Rain sceneRain;
 Scene_Brooke sceneBrooke;
 Scene_Amber sceneAmber;
 
+Scene current;
+Scene_Rain scene1;
+Scene_Brooke scene2;
+Scene meta;
+
 PGraphics offscreenBuffer;
 
 
@@ -54,6 +59,11 @@ void setup()
     scenes.add(new Scene_Panel(sceneBrooke, sceneAmber)); // 8
 
     scenes.add(new Scene_Quad(sceneShapes, sceneRain, sceneRain, sceneShapes)); // 9
+    
+    scene1 = new Scene_Rain();
+    scene2 = new Scene_Brooke();
+    meta = new MetaScene(scene1, scene2);
+    //scenes.add(meta);
     scenes.add(new Scene_Water()); // a
 
     currentScene = scenes.get(0);

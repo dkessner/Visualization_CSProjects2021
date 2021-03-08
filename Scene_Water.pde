@@ -45,40 +45,8 @@ class Scene_Water extends Scene
         }
         
         //switching scenes
-        //switchScenes(time, 3, 4);
-        //switchScenes(time, 6, 9);
-        if(time>5){
-          currentScene = scenes.get(4);
-          offscreenBuffer.beginDraw();
-          offscreenBuffer.background(0);
-          currentScene.initialize(offscreenBuffer);
-          offscreenBuffer.endDraw();
-        }
-        
-        /*else if(time>5)
-        {
-          currentScene = scenes.get(9);
-          offscreenBuffer.beginDraw();
-          offscreenBuffer.background(0);
-          currentScene.initialize(offscreenBuffer);
-          offscreenBuffer.endDraw();
-        }
-        /*if(time>3)
-          {
-            while(time<6)
-            {
-              currentScene = scenes.get(4);
-              offscreenBuffer.beginDraw();
-              offscreenBuffer.background(0);
-              currentScene.initialize(offscreenBuffer);
-              offscreenBuffer.endDraw();
-            }
-          }
-         currentScene = scenes.get(9);
-         offscreenBuffer.beginDraw();
-         offscreenBuffer.background(0);
-         currentScene.initialize(offscreenBuffer);
-         offscreenBuffer.endDraw();*/
+        meta.initialize(pg);
+        meta.display(pg, musicLevel);
     }
     void keyPressed()
     {
@@ -258,31 +226,29 @@ void drawTorus(PGraphics pg)
     pg.endShape();
   }
 }
-void switchScenes(float time, float n, int index)
+class MetaScene extends Scene
 {
-  while(time>n && time<n+3)
+  private Scene scene1;
+  private Scene scene2;
+  public MetaScene(Scene scene1, Scene scene2)
   {
-     currentScene = scenes.get(index);
-     offscreenBuffer.beginDraw();
-     offscreenBuffer.background(0);
-     currentScene.initialize(offscreenBuffer);
-     offscreenBuffer.endDraw();  
+    this.scene1=scene1;
+    this.scene2=scene2;
   }
-   currentScene = scenes.get(9);
-   offscreenBuffer.beginDraw();
-   offscreenBuffer.background(0);
-   currentScene.initialize(offscreenBuffer);
-   offscreenBuffer.endDraw();   
-   /*
-  startTime = millis();
-  time = (millis()-startTime)/1000;
-  while(time<3)
+    void initialize(PGraphics pg)
   {
+    scene1.initialize(pg);
+    scene2.initialize(pg);
   }
-   currentScene = scenes.get(index);
-   offscreenBuffer.beginDraw();
-   offscreenBuffer.background(0);
-   currentScene.initialize(offscreenBuffer);
-   offscreenBuffer.endDraw();   
-   */
+  void display(PGraphics pg, float musicLevel)
+  {
+    if (time<5)
+    {
+      scene1.display(pg, musicLevel);
+    }
+    else
+    {
+      scene2.display(pg, musicLevel);
+    }
+  }
 }
