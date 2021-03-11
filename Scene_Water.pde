@@ -226,29 +226,3 @@ void drawTorus(PGraphics pg)
     pg.endShape();
   }
 }
-class MetaScene extends Scene
-{
-  private Scene scene1;
-  private Scene scene2;
-  public MetaScene(Scene scene1, Scene scene2)
-  {
-    this.scene1=scene1;
-    this.scene2=scene2;
-  }
-    void initialize(PGraphics pg)
-  {
-    scene1.initialize(pg);
-    scene2.initialize(pg);
-  }
-  void display(PGraphics pg, float musicLevel)
-  {
-    if (time<5)
-    {
-      scene1.display(pg, musicLevel);
-    }
-    else
-    {
-      scene2.display(pg, musicLevel);
-    }
-  }
-}

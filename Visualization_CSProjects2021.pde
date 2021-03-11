@@ -62,9 +62,9 @@ void setup()
     
     scene1 = new Scene_Rain();
     scene2 = new Scene_Brooke();
-    meta = new MetaScene(scene1, scene2);
-    //scenes.add(meta);
-    scenes.add(new Scene_Water()); // a
+    meta = new MetaScene();
+    scenes.add(meta);
+    //scenes.add(new Scene_Water()); // a
 
     currentScene = scenes.get(0);
     currentScene.initialize(offscreenBuffer);
