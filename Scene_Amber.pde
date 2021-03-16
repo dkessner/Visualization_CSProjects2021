@@ -6,6 +6,8 @@ class Scene_Amber extends Scene
   int w = 2000;
   int h = 1600;
   
+  boolean stroke = false;
+  
   float flying = 0;
   
   float[][] terrain;
@@ -47,9 +49,13 @@ class Scene_Amber extends Scene
     
     pg.background(0);
     pg.noFill(); 
-    //pg.noStroke();
-    pg.colorMode(HSB, 2*PI, 1, 1);
-    pg.stroke((millis()/500.)%(2*PI), 1, 1);
+    
+    if(stroke == true)
+      pg.noStroke();
+    else if(stroke == false) {
+      pg.colorMode(HSB, 2*PI, 1, 1);
+      pg.stroke((millis()/500.)%(2*PI), 1, 1);
+    }
     
     pg.translate(pg.width/2, pg.height/2+50);
     pg.rotateX(PI/3);
