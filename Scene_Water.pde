@@ -45,8 +45,8 @@ class Scene_Water extends Scene
         }
         
         //switching scenes
-        meta.initialize(pg);
-        meta.display(pg, musicLevel);
+        //meta.initialize(pg);
+        //meta.display(pg, musicLevel);
     }
     void keyPressed()
     {

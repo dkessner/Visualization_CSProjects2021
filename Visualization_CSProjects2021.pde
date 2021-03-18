@@ -12,15 +12,17 @@ AudioInput microphone;
 AudioSource source; // either file or microphone
 float highestLevel = 1e-6;
 
-ArrayList<Scene> scenes;
 Scene currentScene;
 
+Scene_Title sceneTitle;
 Scene_Shapes sceneShapes;
 Scene_Rain sceneRain;
 Scene_Brooke sceneBrooke;
 Scene_Amber sceneAmber;
+Scene_Panel scenePanel;
+Scene_Quad sceneQuad;
+Scene_Water sceneWater;
 
-Scene current;
 Scene_Rain scene1;
 Scene_Brooke scene2;
 Scene meta;
@@ -35,38 +37,23 @@ void setup()
 
     initializeAudio();
 
-    scenes = new ArrayList<Scene>();
-    scenes.add(new Scene_Title());
-
+    sceneTitle = new Scene_Title();
     sceneShapes = new Scene_Shapes();
-    scenes.add(sceneShapes); // 1
-   
     sceneBrooke = new Scene_Brooke();
-    scenes.add(new Scene_Brooke()); // 2
-    
-    scenes.add(new Scene_Isabelle()); // 3
-
     sceneRain = new Scene_Rain();
-    scenes.add(sceneRain); // 4
-
-    scenes.add(new Scene_Velocity()); // 5
-   
     sceneAmber = new Scene_Amber();
-    scenes.add(new Scene_Amber()); // 6
-   
-    scenes.add(new Scene_Explosion());
+    scenePanel = new Scene_Panel(sceneBrooke, sceneAmber);
+    sceneQuad = new Scene_Quad(sceneShapes, sceneRain, sceneRain, sceneShapes);
+    sceneWater = new Scene_Water();
     
-    scenes.add(new Scene_Panel(sceneBrooke, sceneAmber)); // 8
-
-    scenes.add(new Scene_Quad(sceneShapes, sceneRain, sceneRain, sceneShapes)); // 9
-    
+    /*
     scene1 = new Scene_Rain();
     scene2 = new Scene_Brooke();
     meta = new MetaScene();
     scenes.add(meta);
-    //scenes.add(new Scene_Water()); // a
+    */
 
-    currentScene = scenes.get(0);
+    currentScene = sceneTitle;
     currentScene.initialize(offscreenBuffer);
 }
 
@@ -106,29 +93,23 @@ void keyPressed()
 {
     if (key >= '0' && key <= '9')
     {
-        int index = (int)(key - '0');
-        if (index < scenes.size())
-        {
-          currentScene = scenes.get(index);
-
-          offscreenBuffer.beginDraw();
-          offscreenBuffer.background(0);
-          currentScene.initialize(offscreenBuffer);
-          offscreenBuffer.endDraw();
-        }
-    }
-    else if (key == 'a')
-    {
-        int index = 10;
-        if (index < scenes.size())
-        {
-          currentScene = scenes.get(index);
-
-          offscreenBuffer.beginDraw();
-          offscreenBuffer.background(0);
-          currentScene.initialize(offscreenBuffer);
-          offscreenBuffer.endDraw();
-        }
+        if (key == '0')
+            currentScene = sceneTitle;
+        else if (key == '1')
+            currentScene = sceneBrooke;
+        else if (key == '2')
+            currentScene = sceneAmber;
+        else if (key == '3')
+            currentScene = scenePanel;
+        else if (key == '4')
+            currentScene = sceneWater;
+        else if (key == '5')
+            currentScene = sceneQuad;
+    
+        offscreenBuffer.beginDraw();
+        offscreenBuffer.background(0);
+        currentScene.initialize(offscreenBuffer);
+        offscreenBuffer.endDraw();
     }
     else if (key == 'p')
     {

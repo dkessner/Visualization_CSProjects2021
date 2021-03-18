@@ -12,11 +12,14 @@ class MetaScene extends Scene
   }
   void initialize(PGraphics pg)
   {
+    /*
     Scene s = scenes.get(index);
     s.initialize(pg);
+    */
   }
   void display(PGraphics pg, float musicLevel)
   {
+    /*
     Scene s = scenes.get(index);
     s.display(pg, musicLevel);
     if (frameCount % 50 == 0)
@@ -27,5 +30,6 @@ class MetaScene extends Scene
       s = scenes.get(index);
       s.initialize(pg);
     }
+    */
   }
 }
