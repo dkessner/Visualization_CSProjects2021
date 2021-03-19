@@ -46,12 +46,7 @@ void setup()
     sceneQuad = new Scene_Quad(sceneShapes, sceneRain, sceneRain, sceneShapes);
     sceneWater = new Scene_Water();
     
-    /*
-    scene1 = new Scene_Rain();
-    scene2 = new Scene_Brooke();
     meta = new MetaScene();
-    scenes.add(meta);
-    */
 
     currentScene = sceneTitle;
     currentScene.initialize(offscreenBuffer);
@@ -105,6 +100,8 @@ void keyPressed()
             currentScene = sceneWater;
         else if (key == '5')
             currentScene = sceneQuad;
+        else if (key == '6')
+            currentScene = meta;
     
         offscreenBuffer.beginDraw();
         offscreenBuffer.background(0);
