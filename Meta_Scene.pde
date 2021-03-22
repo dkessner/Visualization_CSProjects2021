@@ -12,11 +12,15 @@ class MetaScene extends Scene
   public MetaScene()
   {
     pairs = new ArrayList<Pair>();
+    addTimePoint(5, sceneShapes);
+    //addTimePoint(10, sceneBrooke);
+    //addTimePoint(10, sceneRain);
+    //addTimePoint(10, sceneAmber);
+    //addTimePoint(15, scenePanel);
+    //addTimePoint(10, sceneQuad);
     addTimePoint(10, sceneWater);
     addTimePoint(15, sceneTitle);
-    addTimePoint(20, sceneWater);
     initializeScene();
-    metaStartTime = millis()/1000;
   }
   void initializeScene()
   {
@@ -27,6 +31,7 @@ class MetaScene extends Scene
   void initialize(PGraphics pg)
   {
     currentScene.initialize(pg);
+    metaStartTime = millis();
   }
   void addTimePoint(float time, Scene name)
   {
@@ -34,7 +39,7 @@ class MetaScene extends Scene
   }
   void display(PGraphics pg, float musicLevel)
   {
-    metaTime=(millis()/1000-metaStartTime);
+    metaTime=(millis()-metaStartTime)/1000;
     if(metaTime<limit)
     {
       currentScene.display(pg, musicLevel);
