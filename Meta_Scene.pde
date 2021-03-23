@@ -3,7 +3,7 @@ float metaTime;
 float metaStartTime;
 int index=0;
 
-class MetaScene extends Scene
+public class MetaScene extends Scene
 {
   ArrayList<Pair> pairs;
   Scene currentScene;
@@ -12,14 +12,7 @@ class MetaScene extends Scene
   public MetaScene()
   {
     pairs = new ArrayList<Pair>();
-    addTimePoint(5, sceneShapes);
-    //addTimePoint(10, sceneBrooke);
-    //addTimePoint(10, sceneRain);
-    //addTimePoint(10, sceneAmber);
-    //addTimePoint(15, scenePanel);
-    //addTimePoint(10, sceneQuad);
-    addTimePoint(10, sceneWater);
-    addTimePoint(15, sceneTitle);
+    addTimePoint(3, sceneShapes);
     initializeScene();
   }
   void initializeScene()
@@ -33,7 +26,7 @@ class MetaScene extends Scene
     currentScene.initialize(pg);
     metaStartTime = millis();
   }
-  void addTimePoint(float time, Scene name)
+  public void addTimePoint(float time, Scene name)
   {
     pairs.add(new Pair(time, name));
   }
@@ -49,6 +42,7 @@ class MetaScene extends Scene
       index++;
       index=index%pairs.size();
       initializeScene();
+      initialize(pg);
       currentScene.display(pg, musicLevel);
     }
   }

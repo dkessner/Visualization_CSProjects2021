@@ -25,7 +25,7 @@ Scene_Water sceneWater;
 
 Scene_Rain scene1;
 Scene_Brooke scene2;
-Scene meta;
+MetaScene meta;
 
 PGraphics offscreenBuffer;
 
@@ -47,6 +47,14 @@ void setup()
     sceneWater = new Scene_Water();
     
     meta = new MetaScene();
+    //meta.addTimePoint(3, sceneShapes);
+    meta.addTimePoint(3, sceneBrooke);
+    meta.addTimePoint(3, sceneRain);
+    meta.addTimePoint(3, sceneAmber);
+    meta.addTimePoint(3, scenePanel);
+    meta.addTimePoint(3, sceneQuad);
+    meta.addTimePoint(3, sceneWater);
+    meta.addTimePoint(5, sceneTitle);
 
     currentScene = sceneTitle;
     currentScene.initialize(offscreenBuffer);
