@@ -6,6 +6,7 @@ class Scene_Water extends Scene
 {
     void initialize(PGraphics pg)
     {
+        pg.clear();
         water = loadImage("waterSurface.jpg");
         startTime = millis();
     }

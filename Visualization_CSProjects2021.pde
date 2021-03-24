@@ -53,7 +53,7 @@ void setup()
     meta.addTimePoint(3, scenePanel);
     meta.addTimePoint(3, sceneQuad);
     meta.addTimePoint(3, sceneWater);
-    meta.addTimePoint(5, sceneTitle);
+    meta.addTimePoint(3, sceneTitle);
 
     currentScene = sceneTitle;
     currentScene.initialize(offscreenBuffer);
