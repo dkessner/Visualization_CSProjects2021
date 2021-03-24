@@ -13,8 +13,8 @@ class Scene_Panel extends Scene
   
   void initialize (PGraphics pg)
   {
-     int w = pg.width / 2;
-     int h = pg.height / 2;
+     int w = 800;
+     int h = 800;
      
      for (int i=0; i<2; i++)
      {
@@ -47,8 +47,8 @@ class Scene_Panel extends Scene
         panel.endDraw(); 
      }
      
-      pg.image(panels.get(0), pg.height/2, 0);
-      pg.image(panels.get(1), 0, pg.height/2);
+      pg.image(panels.get(0),0, 0);
+      pg.image(panels.get(1),0,height/2);
   }
   
     private ArrayList<Scene> scenes;
