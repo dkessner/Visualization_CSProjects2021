@@ -30,6 +30,7 @@ class Scene_Brooke extends Scene
 
     pg.pushMatrix();
     pg.translate(width/2, height/2,0);
+    blendMode(BLEND);
   
    for (int i=0; i<n; i++)
    {
@@ -81,7 +82,7 @@ class Scene_Brooke extends Scene
     
 
  float hue = 360 * sqrt( sq(x - width/2) + sq(y - height/2)) / max(width/2,height/2);
- //blendMode(ADD);
+ 
  pg.stroke(hue, 255, 255);
  
   velocity = file.mix.level()*500;
