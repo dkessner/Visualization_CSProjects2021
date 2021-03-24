@@ -22,10 +22,8 @@ Scene_Amber sceneAmber;
 Scene_Panel scenePanel;
 Scene_Quad sceneQuad;
 Scene_Water sceneWater;
-
-Scene_Rain scene1;
-Scene_Brooke scene2;
 MetaScene meta;
+Scene_Black sceneBlack;
 
 PGraphics offscreenBuffer;
 
@@ -45,9 +43,10 @@ void setup()
     scenePanel = new Scene_Panel(sceneBrooke, sceneAmber);
     sceneQuad = new Scene_Quad(sceneShapes, sceneRain, sceneRain, sceneShapes);
     sceneWater = new Scene_Water();
+    sceneBlack = new Scene_Black();
     
     meta = new MetaScene();
-    //meta.addTimePoint(3, sceneShapes);
+    meta.addTimePoint(3, sceneShapes);
     meta.addTimePoint(3, sceneBrooke);
     meta.addTimePoint(3, sceneRain);
     meta.addTimePoint(3, sceneAmber);

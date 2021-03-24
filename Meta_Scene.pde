@@ -12,7 +12,7 @@ public class MetaScene extends Scene
   public MetaScene()
   {
     pairs = new ArrayList<Pair>();
-    addTimePoint(3, sceneShapes);
+    addTimePoint(3, sceneBlack);
     initializeScene();
   }
   void initializeScene()
