@@ -68,9 +68,9 @@ class Particle
     {
       pg.noStroke();
       pg.fill(c);
-      pg.ellipse(pos.x, pos.y + i*2, i+r/2, i+r/2);
+      pg.ellipse(pos.x, pos.y + i*2, i+r/3, i+r/2.5);
     }
-    r*=.98;
+    r*=.97;
     update();
   }
   

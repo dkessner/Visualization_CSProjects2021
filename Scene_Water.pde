@@ -6,9 +6,11 @@ class Scene_Water extends Scene
 {
     void initialize(PGraphics pg)
     {
-        pg.clear();
+        pg.colorMode(RGB, 255, 255, 255);
         water = loadImage("waterSurface.jpg");
+        krispyKreme = loadImage("KrispyKreme.png");
         startTime = millis();
+        c = color(0, 200, 200);
     }
   
     void display(PGraphics pg, float musicLevel) 
@@ -44,10 +46,6 @@ class Scene_Water extends Scene
         if (level>10){
           c = color(random(0,255), random(0,255), random(0,255));
         }
-        
-        //switching scenes
-        //meta.initialize(pg);
-        //meta.display(pg, musicLevel);
     }
     void keyPressed()
     {
@@ -120,6 +118,7 @@ color c = color(0, 200, 200);
 float z1;
 
 private PImage water;
+private PImage krispyKreme;
 
 void standardAxesTransformation(PGraphics pg)
 {
@@ -134,7 +133,7 @@ void drawAxes(PGraphics pg)
 
     pg.stroke(255);
     pg.line(-axesRadius, 0, 0, 0, 0, 0);
-    pg.stroke(255, 0, 0);
+    //pg.stroke(255, 0, 0);
     pg.line(0, 0, 0, axesRadius, 0, 0);
 
     pg.stroke(255);
@@ -206,23 +205,21 @@ void drawWater(float time, PGraphics pg)
 }
 void drawTorus(PGraphics pg)
 {
-  //pg.stroke(0, 200, 200);
   pg.stroke(c);
   pg.strokeWeight(1);
   pg.fill(255,0,0);
-  //pg.noFill();
 
   for (float u = 0; u <= 2*PI; u+=.035)
   {
     pg.beginShape();
+    pg.texture(krispyKreme);
     for (float v = 0; v <= 2*PI; v+=.035)
     {
       float x = (a+b*cos(v))*cos(u)*gridSize;
       float y = (a+b*cos(v))*sin(u)*gridSize;
       float z = z1+b*sin(v)*gridSize+2;
-      pg.texture(water);
-      pg.vertex(x, y, z, -100, 100);
-      //pg.vertex(x,y,z);
+      pg.texture(krispyKreme);
+      pg.vertex(x, y, z, -200, 200);
     }
     pg.endShape();
   }

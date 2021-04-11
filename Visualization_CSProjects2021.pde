@@ -46,14 +46,14 @@ void setup()
     sceneBlack = new Scene_Black();
     
     meta = new MetaScene();
-    meta.addTimePoint(3, sceneShapes);
-    meta.addTimePoint(3, sceneBrooke);
-    meta.addTimePoint(3, sceneRain);
-    meta.addTimePoint(3, sceneAmber);
-    meta.addTimePoint(3, scenePanel);
-    meta.addTimePoint(3, sceneQuad);
-    meta.addTimePoint(3, sceneWater);
-    meta.addTimePoint(3, sceneTitle);
+    //meta.addTimePoint(3, sceneTitle);
+    meta.addTimePoint(10, sceneShapes);
+    meta.addTimePoint(10, sceneBrooke);
+    meta.addTimePoint(10, sceneRain);
+    meta.addTimePoint(10, sceneAmber);
+    meta.addTimePoint(10, sceneWater);
+    meta.addTimePoint(10, sceneQuad);
+    //meta.addTimePoint(3, scenePanel);
 
     currentScene = sceneTitle;
     currentScene.initialize(offscreenBuffer);

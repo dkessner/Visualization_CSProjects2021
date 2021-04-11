@@ -17,7 +17,7 @@ class Scene_Rain extends Scene
        pg.fill(255);
        pg.text("level: " + level, 4*width/5-10, height/12);
        p.run(pg, level, n, c);
-       for(int i=0; i<int(level)/25; i++)
+       for(int i=0; i<int(level)/20; i++)
          p.addParticle(level);
     }
     

@@ -40,7 +40,9 @@ public class MetaScene extends Scene
     else 
     {
       index++;
-      index=index%pairs.size();
+      //index=index%pairs.size();
+      if(index>=pairs.size())
+        index=1;
       initializeScene();
       initialize(pg);
       currentScene.display(pg, musicLevel);
